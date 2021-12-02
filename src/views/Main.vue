@@ -79,13 +79,14 @@ export default {
     }
   },
   methods: {
-    // 검색 요청 파라미터 확인
+    // 검색 요청
     doSearch(val){
       if (val.radioSelected == "" || val.searchKeyword == "") {
         this.alert = true
         this.$refs.search.focus()
       } else {
-        console.log(val)
+        this.$store.dispatch("getMedicines", val);
+        this.$router.push({ name: "Search" });
       }
     }
   }
