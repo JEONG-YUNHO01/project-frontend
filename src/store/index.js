@@ -4,8 +4,18 @@ import Vuex from "vuex";
 Vue.use(Vuex);
 
 export default new Vuex.Store({
-  state: {},
-  mutations: {},
+  state: {
+    searchKeyword: "",
+    radioSelected: "itemName",
+  },
+  mutations: {
+    setSearchKeyword(state, data) {
+      state.searchKeyword = data
+    },
+    setSearchRadio(state, data) {
+      state.radioSelected = data
+    }
+  },
   actions: {},
   modules: {},
 });
