@@ -85,7 +85,6 @@
             <v-list-item-content>
               <v-list-item-title>[의약품 사진]</v-list-item-title>
               <v-img
-                lazy-src="https://picsum.photos/id/11/10/6"
                 max-height="200"
                 max-width="300"
                 :src="drugInfo.itemImage"

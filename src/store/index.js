@@ -14,6 +14,7 @@ export default new Vuex.Store({
     totalCount: 0,
     numOfRows: 10,
     totalPages: 0,
+    clientIp: "",
   },
   mutations: {
     setSearchKeyword(state, data) {
@@ -43,8 +44,22 @@ export default new Vuex.Store({
     setLoadingClose(state) {
       state.isLoading = false
     },
+    setIp(state, data){
+      state.clientIp = data
+    },
   },
   actions: {
+    // 클라이언트 아이피를 가져오는 외부API(부정 이용 클라이언트를 식별하기 위한 확장단계)
+    getIp(context){
+      axios
+        .get("https://api.ipify.org?format=json")
+        .then(res => {
+          context.commit("setIp", res.data.ip)
+        })
+        .catch(err => {
+          console.log(err)
+        })
+    },
     // 의약품 검색 결과 리스트 반환 API
     getMedicines(context, payload){
       context.commit("setLoading");

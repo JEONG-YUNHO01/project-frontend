@@ -28,6 +28,9 @@
 
 <script>
 export default {
+  created() {
+    this.$store.dispatch('getIp')
+  },
   data: () => ({
     links: [
       { name: 'Main', to: '/main'},
