@@ -133,7 +133,7 @@ import { mapState } from "vuex";
             content : this.content,
             ipAddr : this.$store.state.clientIp
           }
-          var url = "http://localhost:1323/api/contact";
+          var url = process.env.VUE_APP_APIURL + "/contact";
           axios
             .post(url, params)
             .then(res => {
