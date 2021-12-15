@@ -255,7 +255,7 @@ import { mapState } from "vuex";
       // 의약품 상세정보 취득
       getDetail(arg){
         this.$store.commit("setLoading");
-        var url = "http://localhost:1323/api/detail?itemSeq=" + arg.itemSeq;
+        var url = process.env.VUE_APP_APIURL + "/detail?itemSeq=" + arg.itemSeq;
         axios
           .get(url)
           .then(res => {

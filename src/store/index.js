@@ -63,7 +63,7 @@ export default new Vuex.Store({
     // 의약품 검색 결과 리스트 반환 API
     getMedicines(context, payload){
       context.commit("setLoading");
-      var url = "http://localhost:1323/api/search?";
+      var url = process.env.VUE_APP_APIURL + "/search?";
       if (payload.radioSelected == "itemName") {
         url += "itemName=" + payload.searchKeyword;
       } else if (payload.radioSelected == "entpName"){

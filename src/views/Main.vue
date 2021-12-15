@@ -30,8 +30,8 @@
           v-model="search"
           label="키워드를 입력해주세요"
           append-icon="mdi-pill"
-          @click:append="doSearch({ searchKeyword: searchKeyword, radioSelected: searchKeyword })"
-          @keypress.enter="doSearch({ searchKeyword: searchKeyword, radioSelected: searchKeyword })"
+          @click:append="doSearch({ searchKeyword: search, radioSelected: radio })"
+          @keypress.enter="doSearch({ searchKeyword: search, radioSelected: radio })"
         >
         </v-text-field>
         <div>
@@ -77,6 +77,18 @@ export default {
         this.$store.commit("setSearchRadio", val);
       }
     }
+  },
+  watch: {
+    search(oldVal, NewVal) {
+      if (oldVal != NewVal) {
+        this.$store.commit("setClearData");
+      }
+    },
+    radio(oldVal, NewVal) {
+      if (oldVal != NewVal) {
+        this.$store.commit("setClearData");
+      }
+    },
   },
   methods: {
     // 검색 요청
